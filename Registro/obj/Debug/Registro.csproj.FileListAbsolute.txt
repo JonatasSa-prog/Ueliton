@@ -1,0 +1,10 @@
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\Registro.exe.config
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\Registro.exe
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\Registro.pdb
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\obj\Debug\Registro.csprojAssemblyReference.cache
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\obj\Debug\Registro.Form1.resources
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\obj\Debug\Registro.Properties.Resources.resources
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\obj\Debug\Registro.csproj.GenerateResource.cache
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\obj\Debug\Registro.csproj.CoreCompileInputs.cache
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\obj\Debug\Registro.exe
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\obj\Debug\Registro.pdb
