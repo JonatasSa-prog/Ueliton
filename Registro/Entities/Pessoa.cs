@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,16 +9,34 @@ namespace Registro.Entities
 {
     class Pessoa
     {
-        
+
         public Guid Id { get; set; }
         public String Name { get; set; }
+        public String CPF { get; set; }
         public String Tel { get; set; }
+        public String Email { get; set; }
+        public DateTime Nascimento { get; set; }
+        
 
-        public Pessoa(string name, string tel)
+
+        public Pessoa(string name, string tel, String cpf, String email, DateTime nascimento)
         {
             Id = Guid.NewGuid();
             Name = name;
+            CPF = cpf;
             Tel = tel;
+            Email = email;
+            Nascimento = nascimento;
+        }
+
+        public Pessoa(string name, string tel, String cpf, String email)
+        {
+            Id = Guid.NewGuid();
+            Name = name;
+            CPF = cpf;
+            Tel = tel;
+            Email = email;
+            
         }
         public List<Pessoa> Listar()
         {
@@ -27,7 +46,7 @@ namespace Registro.Entities
 
         public override int GetHashCode()
         {
-            return Id.GetHashCode() + Name.GetHashCode() + Tel.GetHashCode();
+            return CPF.GetHashCode();
         }
 
         public override bool Equals(object obj)
@@ -35,7 +54,7 @@ namespace Registro.Entities
             if (!(obj is Pessoa))
                 return false;
             Pessoa other = obj as Pessoa;
-            return Id.Equals(other.Id) && Name.Equals(other.Name) && Tel.Equals(other.Tel);
+            return CPF.Equals(other.CPF);
         }
     }
 }

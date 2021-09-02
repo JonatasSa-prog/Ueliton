@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ui/N2KJhaGf3N7H7/8jKzb2noFKmxPLpwXZ4RE4QRqSSizH04kYDVv+ha4OFuNWvPET3v5G0+inYPYR2h3hBpQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jonatas.santos\\Desktop\\Project-Ueliton\\Registro\\Registro\\Registro.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jonatas.santos\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\jonatas.santos\\.nuget\\packages\\microsoft.netframework.analyzers\\3.3.2\\microsoft.netframework.analyzers.3.3.2.nupkg.sha512",
+    "C:\\Users\\jonatas.santos\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.2\\microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
+    "C:\\Users\\jonatas.santos\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.2\\microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512",
+    "C:\\Users\\jonatas.santos\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\jonatas.santos\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

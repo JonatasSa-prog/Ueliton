@@ -37,16 +37,28 @@ namespace Registro
             this.Cadastrar = new System.Windows.Forms.Button();
             this.Pesquisa = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Pesquisar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.CPF = new System.Windows.Forms.TextBox();
+            this.Email = new System.Windows.Forms.TextBox();
+            this.Nascimento = new System.Windows.Forms.DateTimePicker();
+            this.Atualizar = new System.Windows.Forms.Button();
+            this.Deletar = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pessoaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Pesquisar = new System.Windows.Forms.Button();
-            this.Resetar = new System.Windows.Forms.Button();
+            this.pessoaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.pessoasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pessoasBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pessoaBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoasBindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +84,7 @@ namespace Registro
             // 
             // Nome
             // 
-            this.Nome.Location = new System.Drawing.Point(65, 31);
+            this.Nome.Location = new System.Drawing.Point(65, 27);
             this.Nome.Name = "Nome";
             this.Nome.Size = new System.Drawing.Size(100, 20);
             this.Nome.TabIndex = 2;
@@ -88,7 +100,7 @@ namespace Registro
             // 
             // Cadastrar
             // 
-            this.Cadastrar.Location = new System.Drawing.Point(65, 110);
+            this.Cadastrar.Location = new System.Drawing.Point(12, 255);
             this.Cadastrar.Name = "Cadastrar";
             this.Cadastrar.Size = new System.Drawing.Size(75, 23);
             this.Cadastrar.TabIndex = 5;
@@ -98,10 +110,11 @@ namespace Registro
             // 
             // Pesquisa
             // 
-            this.Pesquisa.Location = new System.Drawing.Point(392, 170);
+            this.Pesquisa.Location = new System.Drawing.Point(757, 37);
             this.Pesquisa.Name = "Pesquisa";
             this.Pesquisa.Size = new System.Drawing.Size(100, 20);
             this.Pesquisa.TabIndex = 8;
+            this.Pesquisa.TextChanged += new System.EventHandler(this.Pesquisa_TextChanged);
             // 
             // dataGridView1
             // 
@@ -110,13 +123,96 @@ namespace Registro
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
-            this.telDataGridViewTextBoxColumn});
+            this.cPFDataGridViewTextBoxColumn,
+            this.telDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn,
+            this.nascimentoDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.pessoaBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(266, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(435, 64);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(344, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(644, 209);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_2);
+            // 
+            // Pesquisar
+            // 
+            this.Pesquisar.Location = new System.Drawing.Point(676, 35);
+            this.Pesquisar.Name = "Pesquisar";
+            this.Pesquisar.Size = new System.Drawing.Size(75, 23);
+            this.Pesquisar.TabIndex = 10;
+            this.Pesquisar.Text = "Pesquisar:";
+            this.Pesquisar.UseVisualStyleBackColor = true;
+            this.Pesquisar.Click += new System.EventHandler(this.Pesquisar_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 113);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "CPF:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 157);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "E-mail:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 204);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(107, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Data de Nascimento:";
+            // 
+            // CPF
+            // 
+            this.CPF.Location = new System.Drawing.Point(65, 106);
+            this.CPF.Name = "CPF";
+            this.CPF.Size = new System.Drawing.Size(100, 20);
+            this.CPF.TabIndex = 14;
+            this.CPF.TextChanged += new System.EventHandler(this.CPF_TextChanged);
+            // 
+            // Email
+            // 
+            this.Email.Location = new System.Drawing.Point(65, 150);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(100, 20);
+            this.Email.TabIndex = 15;
+            // 
+            // Nascimento
+            // 
+            this.Nascimento.Location = new System.Drawing.Point(128, 198);
+            this.Nascimento.Name = "Nascimento";
+            this.Nascimento.Size = new System.Drawing.Size(231, 20);
+            this.Nascimento.TabIndex = 17;
+            this.Nascimento.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // Atualizar
+            // 
+            this.Atualizar.Location = new System.Drawing.Point(93, 255);
+            this.Atualizar.Name = "Atualizar";
+            this.Atualizar.Size = new System.Drawing.Size(75, 23);
+            this.Atualizar.TabIndex = 18;
+            this.Atualizar.Text = "Atualizar";
+            this.Atualizar.UseVisualStyleBackColor = true;
+            this.Atualizar.Click += new System.EventHandler(this.Atualizar_Click);
+            // 
+            // Deletar
+            // 
+            this.Deletar.Location = new System.Drawing.Point(174, 255);
+            this.Deletar.Name = "Deletar";
+            this.Deletar.Size = new System.Drawing.Size(75, 23);
+            this.Deletar.TabIndex = 19;
+            this.Deletar.Text = "Deletar";
+            this.Deletar.UseVisualStyleBackColor = true;
+            this.Deletar.Click += new System.EventHandler(this.Deletar_Click);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -130,36 +226,38 @@ namespace Registro
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             // 
+            // cPFDataGridViewTextBoxColumn
+            // 
+            this.cPFDataGridViewTextBoxColumn.DataPropertyName = "CPF";
+            this.cPFDataGridViewTextBoxColumn.HeaderText = "CPF";
+            this.cPFDataGridViewTextBoxColumn.Name = "cPFDataGridViewTextBoxColumn";
+            // 
             // telDataGridViewTextBoxColumn
             // 
             this.telDataGridViewTextBoxColumn.DataPropertyName = "Tel";
             this.telDataGridViewTextBoxColumn.HeaderText = "Tel";
             this.telDataGridViewTextBoxColumn.Name = "telDataGridViewTextBoxColumn";
             // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            // 
+            // nascimentoDataGridViewTextBoxColumn
+            // 
+            this.nascimentoDataGridViewTextBoxColumn.DataPropertyName = "Nascimento";
+            this.nascimentoDataGridViewTextBoxColumn.HeaderText = "Nascimento";
+            this.nascimentoDataGridViewTextBoxColumn.Name = "nascimentoDataGridViewTextBoxColumn";
+            // 
             // pessoaBindingSource
             // 
             this.pessoaBindingSource.DataSource = typeof(Registro.Entities.Pessoa);
             this.pessoaBindingSource.CurrentChanged += new System.EventHandler(this.pessoaBindingSource_CurrentChanged);
             // 
-            // Pesquisar
+            // pessoaBindingSource1
             // 
-            this.Pesquisar.Location = new System.Drawing.Point(311, 170);
-            this.Pesquisar.Name = "Pesquisar";
-            this.Pesquisar.Size = new System.Drawing.Size(75, 23);
-            this.Pesquisar.TabIndex = 10;
-            this.Pesquisar.Text = "Pesquisar:";
-            this.Pesquisar.UseVisualStyleBackColor = true;
-            this.Pesquisar.Click += new System.EventHandler(this.Pesquisar_Click);
-            // 
-            // Resetar
-            // 
-            this.Resetar.Location = new System.Drawing.Point(311, 199);
-            this.Resetar.Name = "Resetar";
-            this.Resetar.Size = new System.Drawing.Size(75, 23);
-            this.Resetar.TabIndex = 11;
-            this.Resetar.Text = "Resetar";
-            this.Resetar.UseVisualStyleBackColor = true;
-            this.Resetar.Click += new System.EventHandler(this.Resetar_Click);
+            this.pessoaBindingSource1.DataSource = typeof(Registro.Entities.Pessoa);
             // 
             // pessoasBindingSource
             // 
@@ -174,8 +272,15 @@ namespace Registro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 299);
-            this.Controls.Add(this.Resetar);
+            this.ClientSize = new System.Drawing.Size(1091, 308);
+            this.Controls.Add(this.Deletar);
+            this.Controls.Add(this.Atualizar);
+            this.Controls.Add(this.Nascimento);
+            this.Controls.Add(this.Email);
+            this.Controls.Add(this.CPF);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.Pesquisar);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Pesquisa);
@@ -189,6 +294,7 @@ namespace Registro
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pessoaBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoasBindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -208,11 +314,22 @@ namespace Registro
         private System.Windows.Forms.BindingSource pessoaBindingSource;
         private System.Windows.Forms.BindingSource pessoasBindingSource1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button Pesquisar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox CPF;
+        private System.Windows.Forms.TextBox Email;
+        private System.Windows.Forms.BindingSource pessoaBindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button Pesquisar;
-        private System.Windows.Forms.Button Resetar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nascimentoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DateTimePicker Nascimento;
+        private System.Windows.Forms.Button Atualizar;
+        private System.Windows.Forms.Button Deletar;
     }
 }
 
