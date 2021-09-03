@@ -46,12 +46,8 @@ namespace Registro
             this.Nascimento = new System.Windows.Forms.DateTimePicker();
             this.Atualizar = new System.Windows.Forms.Button();
             this.Deletar = new System.Windows.Forms.Button();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pegar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.pessoaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pessoaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.pessoasBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -118,16 +114,7 @@ namespace Registro
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.cPFDataGridViewTextBoxColumn,
-            this.telDataGridViewTextBoxColumn,
-            this.emailDataGridViewTextBoxColumn,
-            this.nascimentoDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.pessoaBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(435, 64);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(644, 209);
@@ -206,7 +193,7 @@ namespace Registro
             // 
             // Deletar
             // 
-            this.Deletar.Location = new System.Drawing.Point(174, 255);
+            this.Deletar.Location = new System.Drawing.Point(255, 255);
             this.Deletar.Name = "Deletar";
             this.Deletar.Size = new System.Drawing.Size(75, 23);
             this.Deletar.TabIndex = 19;
@@ -214,41 +201,25 @@ namespace Registro
             this.Deletar.UseVisualStyleBackColor = true;
             this.Deletar.Click += new System.EventHandler(this.Deletar_Click);
             // 
-            // idDataGridViewTextBoxColumn
+            // Pegar
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.Pegar.Location = new System.Drawing.Point(174, 255);
+            this.Pegar.Name = "Pegar";
+            this.Pegar.Size = new System.Drawing.Size(75, 23);
+            this.Pegar.TabIndex = 20;
+            this.Pegar.Text = "Pegar";
+            this.Pegar.UseVisualStyleBackColor = true;
+            this.Pegar.Click += new System.EventHandler(this.Pegar_Click);
             // 
-            // nameDataGridViewTextBoxColumn
+            // button1
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // cPFDataGridViewTextBoxColumn
-            // 
-            this.cPFDataGridViewTextBoxColumn.DataPropertyName = "CPF";
-            this.cPFDataGridViewTextBoxColumn.HeaderText = "CPF";
-            this.cPFDataGridViewTextBoxColumn.Name = "cPFDataGridViewTextBoxColumn";
-            // 
-            // telDataGridViewTextBoxColumn
-            // 
-            this.telDataGridViewTextBoxColumn.DataPropertyName = "Tel";
-            this.telDataGridViewTextBoxColumn.HeaderText = "Tel";
-            this.telDataGridViewTextBoxColumn.Name = "telDataGridViewTextBoxColumn";
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            // 
-            // nascimentoDataGridViewTextBoxColumn
-            // 
-            this.nascimentoDataGridViewTextBoxColumn.DataPropertyName = "Nascimento";
-            this.nascimentoDataGridViewTextBoxColumn.HeaderText = "Nascimento";
-            this.nascimentoDataGridViewTextBoxColumn.Name = "nascimentoDataGridViewTextBoxColumn";
+            this.button1.Location = new System.Drawing.Point(336, 255);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pessoaBindingSource
             // 
@@ -273,6 +244,8 @@ namespace Registro
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1091, 308);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Pegar);
             this.Controls.Add(this.Deletar);
             this.Controls.Add(this.Atualizar);
             this.Controls.Add(this.Nascimento);
@@ -321,15 +294,11 @@ namespace Registro
         private System.Windows.Forms.TextBox CPF;
         private System.Windows.Forms.TextBox Email;
         private System.Windows.Forms.BindingSource pessoaBindingSource1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nascimentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DateTimePicker Nascimento;
         private System.Windows.Forms.Button Atualizar;
         private System.Windows.Forms.Button Deletar;
+        private System.Windows.Forms.Button Pegar;
+        private System.Windows.Forms.Button button1;
     }
 }
 

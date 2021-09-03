@@ -72,13 +72,23 @@ namespace Registro.Entities
             return (Pessoa) p.FirstOrDefault();
         }
 
-        public void Update(Pessoa a)
+        public void Update(Guid id)
         {
-            pessoas.Where(x => x.Id == a.Id).FirstOrDefault().Name = a.Name;
-            pessoas.Where(x => x.Id == a.Id).FirstOrDefault().Email = a.Email;
-            pessoas.Where(x => x.Id == a.Id).FirstOrDefault().CPF = a.CPF;
-            pessoas.Where(x => x.Id == a.Id).FirstOrDefault().Nascimento = a.Nascimento;
-            pessoas.Where(x => x.Id == a.Id).FirstOrDefault().Tel = a.Tel;
+            if(!pessoas.Where(a => a.Id == id).Any())
+                throw new IdenticPeploExptions("O id não consta no banco de dados!");
+
+            Pessoa pe = GetPessoaById(id);
+            
+            foreach(Pessoa p in pessoas)
+            {
+                if (p.Id == id)
+                {
+                    p.Name = pe.Name;
+                    p.Tel = pe.Tel;
+                    p.CPF = pe.CPF;
+                    p.Email = pe.Email;
+                }
+            }
 
         }
     

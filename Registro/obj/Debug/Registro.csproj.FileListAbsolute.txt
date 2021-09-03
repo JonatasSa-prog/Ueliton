@@ -10,4 +10,16 @@ C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\obj\Debug\Regi
 C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\obj\Debug\Registro.pdb
 C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\System.ComponentModel.Annotations.dll
 C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\obj\Debug\Registro.csproj.CopyComplete
-C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\obj\Debug\Registro.Form2.resources
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\MySql.Data.dll
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\Google.Protobuf.dll
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\Zstandard.Net.dll
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\System.Memory.dll
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\System.Buffers.dll
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\jonatas.santos\Desktop\Project-Ueliton\Registro\Registro\bin\Debug\MySql.Data.xml

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Registro.Entities;
 using Registro.Entities.Exceptions;
-
+using Registro.EntitiesDAO;
 
 
 namespace Registro
@@ -12,6 +12,8 @@ namespace Registro
     public partial class Form1 : Form
     {
         Pessoas pessoas = new Pessoas();
+        Pessoa pessoa;
+        String connect = "server=localhost;port=3306;User Id=root;database=Pessoas; password=Renova@2021";
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +21,11 @@ namespace Registro
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = pessoas.Lista();
+            ConnectionDB c = new ConnectionDB(connect);
+            c.OpenDB();
+            dataGridView1.DataSource = c.ListarDB();
+            c.CloseDB();
+            //dataGridView1.DataSource = pessoas.Lista();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -33,9 +39,7 @@ namespace Registro
             {
                 pessoas.AddPessoas(new Pessoa(Nome.Text, Telefone.Text,CPF.Text,Email.Text,Nascimento.Value.Date));
 
-                dataGridView1.DataSource = "";
-                dataGridView1.DataSource = pessoas.Lista();
-                dataGridView1.Refresh();
+                Resetar();
 
                 Nome.Text = Nome.Text.Remove(0);
                 CPF.Text = CPF.Text.Remove(0);
@@ -49,28 +53,6 @@ namespace Registro
             }
             
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            List<Pessoa> p = pessoas.Lista();
-            
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void pessoaBindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
@@ -102,9 +84,7 @@ namespace Registro
                 else
                 {
                     dataGridView1.ClearSelection();
-                    dataGridView1.DataSource = "";
-                    dataGridView1.DataSource = pessoas.Lista();
-                    dataGridView1.Refresh();
+                    Resetar();
                 }
                 
             }catch(IdenticPeploExptions a)
@@ -164,32 +144,66 @@ namespace Registro
 
         private void Atualizar_Click(object sender, EventArgs e)
         {
-            var p = dataGridView1.CurrentCell.Value;
-            var pessoaAtualizar = pessoas.GetPessoaById((Guid)p);
-
-            Nome.Text = pessoaAtualizar.Name;
-            Email.Text = pessoaAtualizar.Email;
-            Telefone.Text = pessoaAtualizar.Tel;
-            CPF.Text = pessoaAtualizar.CPF;
-
-            var form3 = new Form2(Nome.Text,CPF.Text,Email.Text,Telefone.Text);
-            form3.ShowDialog();
-                pessoas.Update(pessoaAtualizar);
+            pessoa.Name = Nome.Text;
+            pessoa.CPF = CPF.Text;
+            pessoa.Email = Email.Text;
+            pessoa.Tel = Telefone.Text;
+    
+            pessoas.Update(pessoa.Id);
 
             Resetar();
 
         }
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
         private void Deletar_Click(object sender, EventArgs e)
         {
             var p = dataGridView1.CurrentCell.Value;
             var pessoaDeletar = pessoas.GetPessoaById((Guid)p);
             pessoas.Delete(pessoaDeletar);
             Resetar();
+        }
+
+        private void Pegar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var p = dataGridView1.CurrentCell.Value;
+                pessoa = pessoas.GetPessoaById((Guid)p);
+
+                Nome.Text = pessoa.Name;
+                Email.Text = pessoa.Email;
+                Telefone.Text = pessoa.Tel;
+                CPF.Text = pessoa.CPF;
+            }
+            catch(System.InvalidCastException)
+            {
+                MessageBox.Show("Error: ID não é válido. Selecione uma pessoa no Compo (Id)");
+            }
+            catch(System.NullReferenceException)
+            {
+                MessageBox.Show("Error: ID não é válido. Selecione uma pessoa no Compo (Id)");
+            }
+            
+
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String xc = "insert into pessoa(id,nome,cpf,email,telefone,nascimento) values(uuid(), 'Higor', '86474711566', 'jonatas.sa.25@gmail.com', '71991110795', '2000-02-28');";
+                ConnectionDB connection = new ConnectionDB(connect);
+                connection.OpenDB();
+                MessageBox.Show("Conectado");
+                connection.InsertDB(new Pessoa("higor","71991110795","86474711566","jonatas@gmail.com",DateTime.Now.Date));
+                connection.CloseDB();
+
+            }
+            catch
+            {
+
+            }
+            
         }
     }
 }
