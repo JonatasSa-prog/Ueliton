@@ -9,6 +9,7 @@ namespace Registro.EntitiesDAO
     class ConnectionDB
     {
         MySqlConnection connection;
+        Pessoas pessoas = new Pessoas();
         public ConnectionDB(String connect)
         {
             
@@ -52,31 +53,26 @@ namespace Registro.EntitiesDAO
 
         }
 
-        public DataTable ListarDB( )
+        public Pessoas ListarDB( )
         {
-            string str = "select * from pessoa";
+            connection.Open();
+            string str = "select id,nome,cpf,email,telefone,nascimento from pessoa";
             MySqlCommand command = new MySqlCommand(str,connection);
-            try
+            var reader = command.ExecuteReader();
+            while (reader.Read())
             {
-               MySqlDataAdapter objAdp = new MySqlDataAdapter(command);
-               DataTable dtLista = new DataTable();
-          
-                objAdp.Fill(dtLista);
-                return dtLista;
+                pessoas.AddPessoas(new Pessoa(Guid.Parse(reader.GetString(0)), reader.GetString(1), reader.GetString(4), reader.GetString(2), reader.GetString(3), DateTime.Parse(reader.GetString(5))));
             }
-            catch
-            {
-                
-            }
-            return null;
+            connection.Close();
+            return pessoas;
         }
 
-        public void DeletarDB(Pessoa p)
+        public void DeletarDB(DataTable p)
         {
             try
             {
-                string insert = $"DELETE FROM pessoa WHERE id = '{p.Id}';";
-                MySqlCommand command = new MySqlCommand(insert, connection);
+                string delete = $"DELETE FROM pessoa WHERE id = '{p.Rows.ToString()}';";
+                MySqlCommand command = new MySqlCommand(delete, connection);
                 command.ExecuteNonQuery();
             }
             catch
@@ -89,14 +85,33 @@ namespace Registro.EntitiesDAO
         {
             try
             {
-                string insert = $"UPDATE pessoa SET nome = '{p.Name}',cpf = '{p.CPF}',email = '{p.Email}',telefone = '{p.Tel}' WHERE id = {p.Id};";
-                MySqlCommand command = new MySqlCommand(insert, connection);
+                string update = $"UPDATE pessoa SET nome = '{p.Name}',cpf = '{p.CPF}',email = '{p.Email}',telefone = '{p.Tel}' WHERE id = {p.Id};";
+                MySqlCommand command = new MySqlCommand(update, connection);
                 command.ExecuteNonQuery();
             }
             catch
             {
 
             }
+        }
+
+        public DataTable SelectDB(String id)
+        {
+            string str = $"select * from pessoa where id = {id}";
+            MySqlCommand command = new MySqlCommand(str, connection);
+            try
+            {
+                MySqlDataAdapter objAdp = new MySqlDataAdapter(command);
+                DataTable dtLista = new DataTable();
+
+                objAdp.Fill(dtLista);
+                return dtLista;
+            }
+            catch
+            {
+
+            }
+            return null;
         }
         public void OpenDB()
         {

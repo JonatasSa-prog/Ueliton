@@ -29,6 +29,21 @@ namespace Registro.Entities
             Nascimento = nascimento;
         }
 
+        public Pessoa()
+        {
+           
+        }
+
+        public Pessoa(Guid id,string name, string tel, String cpf, String email, DateTime nascimento)
+        {
+            Id = id;
+            Name = name;
+            CPF = cpf;
+            Tel = tel;
+            Email = email;
+            Nascimento = nascimento;
+        }
+
         public Pessoa(string name, string tel, String cpf, String email)
         {
             Id = Guid.NewGuid();

@@ -11,7 +11,7 @@ namespace Registro.Entities
 
         public Pessoas()
         {
-            this.add();
+            //this.add();
         }
 
         public void AddPessoas(Pessoa pessoa)

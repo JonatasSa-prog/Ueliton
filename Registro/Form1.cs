@@ -13,7 +13,8 @@ namespace Registro
     {
         Pessoas pessoas = new Pessoas();
         Pessoa pessoa;
-        String connect = "server=localhost;port=3306;User Id=root;database=Pessoas; password=Renova@2021";
+        //String connect = "server=localhost;port=3306;User Id=root;database=Pessoas; password=Renova@2021";
+        ConnectionDB connection = new ConnectionDB("server=localhost;port=3306;User Id=root;database=Pessoas; password=Renova@2021");
         public Form1()
         {
             InitializeComponent();
@@ -21,11 +22,9 @@ namespace Registro
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ConnectionDB c = new ConnectionDB(connect);
-            c.OpenDB();
-            dataGridView1.DataSource = c.ListarDB();
-            c.CloseDB();
-            //dataGridView1.DataSource = pessoas.Lista();
+
+            Resetar();
+                      
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -36,9 +35,9 @@ namespace Registro
         private void Cadastrar_Click(object sender, EventArgs e)
         {
             try
-            {
-                pessoas.AddPessoas(new Pessoa(Nome.Text, Telefone.Text,CPF.Text,Email.Text,Nascimento.Value.Date));
-
+            {              
+                connection.InsertDB(new Pessoa(Nome.Text, Telefone.Text, CPF.Text, Email.Text, Nascimento.Value.Date));
+               
                 Resetar();
 
                 Nome.Text = Nome.Text.Remove(0);
@@ -83,7 +82,7 @@ namespace Registro
                 }
                 else
                 {
-                    dataGridView1.ClearSelection();
+                    
                     Resetar();
                 }
                 
@@ -99,10 +98,16 @@ namespace Registro
 
         private void Resetar()
         {
-            dataGridView1.DataSource = "";
-            dataGridView1.DataSource = pessoas.Lista();
-            dataGridView1.Refresh();
-
+            
+                
+                pessoas = connection.ListarDB();
+                dataGridView1.DataSource = "";
+                dataGridView1.DataSource = pessoas.Lista();
+                dataGridView1.Refresh();
+                              
+          
+                connection.CloseDB();
+            
         }
 
         private void Nome_TextChanged(object sender, EventArgs e)
@@ -156,10 +161,23 @@ namespace Registro
         }
         private void Deletar_Click(object sender, EventArgs e)
         {
-            var p = dataGridView1.CurrentCell.Value;
-            var pessoaDeletar = pessoas.GetPessoaById((Guid)p);
-            pessoas.Delete(pessoaDeletar);
-            Resetar();
+            try
+            {
+                //connection.OpenDB();
+                var p = dataGridView1.CurrentCell.Value;                            
+                //connection.DeletarDB(p.ToString());
+                
+
+                Resetar();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                connection.CloseDB();
+            }       
         }
 
         private void Pegar_Click(object sender, EventArgs e)
@@ -191,13 +209,7 @@ namespace Registro
         {
             try
             {
-                String xc = "insert into pessoa(id,nome,cpf,email,telefone,nascimento) values(uuid(), 'Higor', '86474711566', 'jonatas.sa.25@gmail.com', '71991110795', '2000-02-28');";
-                ConnectionDB connection = new ConnectionDB(connect);
-                connection.OpenDB();
-                MessageBox.Show("Conectado");
-                connection.InsertDB(new Pessoa("higor","71991110795","86474711566","jonatas@gmail.com",DateTime.Now.Date));
-                connection.CloseDB();
-
+                Resetar();
             }
             catch
             {
