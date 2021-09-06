@@ -164,9 +164,8 @@ namespace Registro
             try
             {
                 //connection.OpenDB();
-                var p = dataGridView1.CurrentCell.Value;                            
-                //connection.DeletarDB(p.ToString());
-                
+                var p = dataGridView1.CurrentCell.Value;                                           
+                connection.DeletarDB(p.ToString());
 
                 Resetar();
             }

@@ -17,9 +17,9 @@ namespace Registro.Entities
         public void AddPessoas(Pessoa pessoa)
         {
             if (pessoas.Where(p => p.Name == pessoa.Name).Any())
-                throw new IdenticPeploExptions("Não foi possivel adicionar essa pessoa poís o nome já exite no banco!");
+               // throw new IdenticPeploExptions("Não foi possivel adicionar essa pessoa poís o nome já exite no banco!");
             if (pessoas.Where(p => p.Tel == pessoa.Tel).Any())
-                throw new IdenticPeploExptions("Não foi possivel adicionar essa pessoa poís o telefone já exite no banco!");
+               // throw new IdenticPeploExptions("Não foi possivel adicionar essa pessoa poís o telefone já exite no banco!");
             if (pessoa.Name == "")
                 throw new IdenticPeploExptions("Informe o Nome");
             if (pessoa.Tel == "")

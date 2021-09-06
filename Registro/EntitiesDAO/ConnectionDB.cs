@@ -67,11 +67,11 @@ namespace Registro.EntitiesDAO
             return pessoas;
         }
 
-        public void DeletarDB(DataTable p)
+        public void DeletarDB(string p)
         {
             try
             {
-                string delete = $"DELETE FROM pessoa WHERE id = '{p.Rows.ToString()}';";
+                string delete = $"DELETE FROM pessoa WHERE id = '{p}';";
                 MySqlCommand command = new MySqlCommand(delete, connection);
                 command.ExecuteNonQuery();
             }
@@ -95,23 +95,15 @@ namespace Registro.EntitiesDAO
             }
         }
 
-        public DataTable SelectDB(String id)
+        public Pessoa SelectDB(string id)
         {
             string str = $"select * from pessoa where id = {id}";
             MySqlCommand command = new MySqlCommand(str, connection);
-            try
-            {
-                MySqlDataAdapter objAdp = new MySqlDataAdapter(command);
-                DataTable dtLista = new DataTable();
-
-                objAdp.Fill(dtLista);
-                return dtLista;
-            }
-            catch
-            {
-
-            }
-            return null;
+           
+            var reader = command.ExecuteReader();
+            reader.Read();
+                
+            return new Pessoa(Guid.Parse(reader.GetString(0)), reader.GetString(1), reader.GetString(4), reader.GetString(2), reader.GetString(3), DateTime.Parse(reader.GetString(5)));
         }
         public void OpenDB()
         {
