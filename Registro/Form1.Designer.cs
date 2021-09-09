@@ -47,7 +47,7 @@ namespace Registro
             this.Atualizar = new System.Windows.Forms.Button();
             this.Deletar = new System.Windows.Forms.Button();
             this.Pegar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.AttTabela = new System.Windows.Forms.Button();
             this.pessoaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pessoaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.pessoasBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -211,15 +211,15 @@ namespace Registro
             this.Pegar.UseVisualStyleBackColor = true;
             this.Pegar.Click += new System.EventHandler(this.Pegar_Click);
             // 
-            // button1
+            // AttTabela
             // 
-            this.button1.Location = new System.Drawing.Point(336, 255);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.AttTabela.Location = new System.Drawing.Point(676, 279);
+            this.AttTabela.Name = "AttTabela";
+            this.AttTabela.Size = new System.Drawing.Size(141, 23);
+            this.AttTabela.TabIndex = 21;
+            this.AttTabela.Text = "Atualizar Tabela";
+            this.AttTabela.UseVisualStyleBackColor = true;
+            this.AttTabela.Click += new System.EventHandler(this.button1_Click);
             // 
             // pessoaBindingSource
             // 
@@ -244,7 +244,7 @@ namespace Registro
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1091, 308);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.AttTabela);
             this.Controls.Add(this.Pegar);
             this.Controls.Add(this.Deletar);
             this.Controls.Add(this.Atualizar);
@@ -298,7 +298,7 @@ namespace Registro
         private System.Windows.Forms.Button Atualizar;
         private System.Windows.Forms.Button Deletar;
         private System.Windows.Forms.Button Pegar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AttTabela;
     }
 }
 

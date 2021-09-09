@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using MySql.Data.MySqlClient;
 using Registro.Entities;
+using Registro.Entities.Exceptions;
 
 namespace Registro.EntitiesDAO
 {
@@ -26,6 +27,8 @@ namespace Registro.EntitiesDAO
         {
             try
             {
+                
+
                 string insert = $"insert into pessoa(id,nome,cpf,email,telefone,nascimento) values(uuid(), '{pessoa.Name}', '{pessoa.CPF}', '{pessoa.Email}','{pessoa.Tel}', '{pessoa.Nascimento.ToString("yyyy-MM-dd")}')";
                 MySqlCommand command = new MySqlCommand(insert,connection);
                 command.ExecuteNonQuery();
@@ -55,7 +58,8 @@ namespace Registro.EntitiesDAO
 
         public Pessoas ListarDB( )
         {
-            connection.Open();
+
+            
             string str = "select id,nome,cpf,email,telefone,nascimento from pessoa";
             MySqlCommand command = new MySqlCommand(str,connection);
             var reader = command.ExecuteReader();
@@ -63,36 +67,27 @@ namespace Registro.EntitiesDAO
             {
                 pessoas.AddPessoas(new Pessoa(Guid.Parse(reader.GetString(0)), reader.GetString(1), reader.GetString(4), reader.GetString(2), reader.GetString(3), DateTime.Parse(reader.GetString(5))));
             }
-            connection.Close();
+            
             return pessoas;
         }
 
         public void DeletarDB(string p)
         {
-            try
-            {
+                
                 string delete = $"DELETE FROM pessoa WHERE id = '{p}';";
                 MySqlCommand command = new MySqlCommand(delete, connection);
                 command.ExecuteNonQuery();
-            }
-            catch
-            {
-
-            }
+            
+          
         }
 
         public void updateDB(Pessoa p)
         {
-            try
-            {
-                string update = $"UPDATE pessoa SET nome = '{p.Name}',cpf = '{p.CPF}',email = '{p.Email}',telefone = '{p.Tel}' WHERE id = {p.Id};";
+          
+                string update = $"UPDATE pessoa SET nome = '{p.Name}',cpf = '{p.CPF}',email = '{p.Email}',telefone = '{p.Tel}' WHERE id = '{p.Id}';";
                 MySqlCommand command = new MySqlCommand(update, connection);
                 command.ExecuteNonQuery();
-            }
-            catch
-            {
-
-            }
+         
         }
 
         public Pessoa SelectDB(string id)

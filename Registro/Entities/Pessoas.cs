@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Registro.Entities.Exceptions;
+using Registro.EntitiesDAO;
 
 namespace Registro.Entities
 {
     class Pessoas
     {
         List<Pessoa> pessoas = new List<Pessoa>();
+        
 
         public Pessoas()
         {
@@ -17,9 +19,9 @@ namespace Registro.Entities
         public void AddPessoas(Pessoa pessoa)
         {
             if (pessoas.Where(p => p.Name == pessoa.Name).Any())
-               // throw new IdenticPeploExptions("Não foi possivel adicionar essa pessoa poís o nome já exite no banco!");
+                throw new IdenticPeploExptions("Não foi possivel adicionar essa pessoa poís o nome já exite no banco!");
             if (pessoas.Where(p => p.Tel == pessoa.Tel).Any())
-               // throw new IdenticPeploExptions("Não foi possivel adicionar essa pessoa poís o telefone já exite no banco!");
+                throw new IdenticPeploExptions("Não foi possivel adicionar essa pessoa poís o telefone já exite no banco!");
             if (pessoa.Name == "")
                 throw new IdenticPeploExptions("Informe o Nome");
             if (pessoa.Tel == "")
@@ -40,6 +42,7 @@ namespace Registro.Entities
                 throw new IdenticPeploExptions("Informe um CPF válido");
 
             pessoas.Add(pessoa);
+
         }
 
         public void add()
@@ -72,6 +75,15 @@ namespace Registro.Entities
             return (Pessoa) p.FirstOrDefault();
         }
 
+        public bool GetPessoaByIdBool(Guid id)
+        {
+            if (!pessoas.Where(x => x.Id == id).Any())
+                return false;
+
+            var p = pessoas.Where(x => x.Id == id);
+            return true;
+        }
+
         public void Update(Guid id)
         {
             if(!pessoas.Where(a => a.Id == id).Any())
@@ -95,6 +107,12 @@ namespace Registro.Entities
         public void Delete(Pessoa a)
         {
             pessoas.Remove(a);
+        }
+
+        public void DeleteAll()
+        {
+            
+                pessoas.Clear();
         }
         public List<Pessoa> Lista()
         {
